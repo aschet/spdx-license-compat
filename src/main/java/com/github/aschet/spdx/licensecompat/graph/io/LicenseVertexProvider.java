@@ -15,7 +15,8 @@ import com.github.aschet.spdx.licensecompat.graph.LicenseVertex;
 import com.github.aschet.spdx.licensecompat.utils.Utils;
 
 /**
- * 
+ * Part of {@link LicenseCompatGraphImporter} to create the correct vertex type.
+ *
  * @author Thomas Ascher
  */
 final class LicenseVertexProvider implements VertexProvider<LicenseVertex> {

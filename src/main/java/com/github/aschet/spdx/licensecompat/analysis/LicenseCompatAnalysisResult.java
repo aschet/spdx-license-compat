@@ -13,29 +13,29 @@ import java.util.Set;
 import org.spdx.rdfparser.license.AnyLicenseInfo;
 
 /**
- * 
+ *
  * @author Thomas Ascher
  *
  */
 public class LicenseCompatAnalysisResult {
 
 	/**
-	 * 
+	 *
 	 */
 	private List<AnyLicenseInfo> conflicts = new ArrayList<>();
 
 	/**
-	 * 
+	 *
 	 */
 	private Set<AnyLicenseInfo> licenses = new LinkedHashSet<>();
 
 	/**
-	 * 
+	 *
 	 */
 	private Set<AnyLicenseInfo> unsupportedLicenses = new LinkedHashSet<>();
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public List<AnyLicenseInfo> getConflicts() {
@@ -43,7 +43,7 @@ public class LicenseCompatAnalysisResult {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public Set<AnyLicenseInfo> getLicenses() {
@@ -51,7 +51,7 @@ public class LicenseCompatAnalysisResult {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public Set<AnyLicenseInfo> getUnsupportedLicenses() {
@@ -59,7 +59,7 @@ public class LicenseCompatAnalysisResult {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public boolean hasConflicts() {
@@ -67,7 +67,7 @@ public class LicenseCompatAnalysisResult {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public boolean hasUnsupportedLicenses() {
@@ -75,7 +75,7 @@ public class LicenseCompatAnalysisResult {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param conflicts
 	 */
 	public void setConflicts(final List<AnyLicenseInfo> conflicts) {
@@ -83,7 +83,7 @@ public class LicenseCompatAnalysisResult {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param licenses
 	 */
 	public void setLicenses(final Set<AnyLicenseInfo> licenses) {
@@ -91,7 +91,7 @@ public class LicenseCompatAnalysisResult {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param unsupportedLicenses
 	 */
 	public void setUnsupportedLicenses(final Set<AnyLicenseInfo> unsupportedLicenses) {

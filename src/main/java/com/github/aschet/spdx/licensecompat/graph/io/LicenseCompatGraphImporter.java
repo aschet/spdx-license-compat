@@ -11,14 +11,14 @@ import com.github.aschet.spdx.licensecompat.graph.LicenseEdge;
 import com.github.aschet.spdx.licensecompat.graph.LicenseVertex;
 
 /**
- * 
- * @author Thomas Ascher
+ * Imports a license compatibility graph from a DOT file.
  *
+ * @author Thomas Ascher
  */
 public class LicenseCompatGraphImporter extends DOTImporter<LicenseVertex, LicenseEdge> {
 
 	/**
-	 * 
+	 * Configures the importer.
 	 */
 	public LicenseCompatGraphImporter() {
 		super(new LicenseVertexProvider(), new LicenseEdgeProvider());

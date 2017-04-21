@@ -8,9 +8,9 @@ package com.github.aschet.spdx.licensecompat.graph;
 import org.jgrapht.EdgeFactory;
 
 /**
- * 
- * @author thomas
+ * Part of the JGraphT interface. Creates transitive edges per default.
  *
+ * @author Thomas Ascher
  */
 class LicenseEdgeFactory implements EdgeFactory<LicenseVertex, LicenseEdge> {
 

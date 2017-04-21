@@ -25,7 +25,13 @@ import com.github.aschet.spdx.licensecompat.graph.io.LicenseCompatGraphImporter;
 import com.github.aschet.spdx.licensecompat.utils.Utils;
 
 /**
- * 
+ * This class represents a license compatibility graph that can determine the
+ * compatibility between licenses based on SPDX license identifiers. Each vertex
+ * in the graph can consist of multiple SPDX license identifiers or a custom
+ * license name. For further details see Kapitsaki, Kramer and Tselikas (2016):
+ * Automating the License Compatibility Process in Open Source Software with
+ * SPDX.
+ *
  * @author Thomas Ascher
  */
 public class LicenseCompatGraph extends DefaultDirectedGraph<LicenseVertex, LicenseEdge>
@@ -34,9 +40,11 @@ public class LicenseCompatGraph extends DefaultDirectedGraph<LicenseVertex, Lice
 	private static final long serialVersionUID = -2023214205631374559L;
 
 	/**
-	 * 
+	 * Creates a graph from a DOT file.
+	 *
 	 * @param file
-	 * @return
+	 *            path to load graph data from
+	 * @return the reconstructed graph
 	 * @throws ImportException
 	 */
 	public static LicenseCompatGraph createFromFile(final File file) throws ImportException {
@@ -48,8 +56,10 @@ public class LicenseCompatGraph extends DefaultDirectedGraph<LicenseVertex, Lice
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Creates a graph from the DOT file that is stored in the internal
+	 * resources
+	 *
+	 * @return the reconstructed graph
 	 * @throws ImportException
 	 */
 	public static LicenseCompatGraph createFromResources() throws ImportException {
@@ -62,7 +72,7 @@ public class LicenseCompatGraph extends DefaultDirectedGraph<LicenseVertex, Lice
 	}
 
 	/**
-	 * 
+	 * Creates an empty license compatibility graph.
 	 */
 	public LicenseCompatGraph() {
 		super(new LicenseEdgeFactory());
@@ -98,10 +108,15 @@ public class LicenseCompatGraph extends DefaultDirectedGraph<LicenseVertex, Lice
 	}
 
 	/**
-	 * 
+	 * Modifies the given license for lookup in the graph. Currently license
+	 * exceptions are not supported. Furthermore only extracted licenses with a
+	 * name will be processed.
+	 *
 	 * @param license
-	 * @return
+	 *            the license that should be prepared for lookup
+	 * @return the license which can be used for lookup
 	 * @throws UnsupportedLicenseException
+	 *             the given extracted license has no name
 	 */
 	AnyLicenseInfo filterLicense(final AnyLicenseInfo license) throws UnsupportedLicenseException {
 		final AnyLicenseInfo targetLicense = ExpressionFiltering.filterOperators(license, OperatorFilter.FILTER_ALL);
@@ -119,9 +134,11 @@ public class LicenseCompatGraph extends DefaultDirectedGraph<LicenseVertex, Lice
 	}
 
 	/**
-	 * 
+	 * Search for the vertex which is associated with the given license.
+	 *
 	 * @param license
-	 * @return
+	 *            the license to lookup
+	 * @return the vertex which contains the given license or null
 	 */
 	LicenseVertex findVertex(final AnyLicenseInfo license) {
 		for (final LicenseVertex vertex : vertexSet()) {
@@ -134,9 +151,15 @@ public class LicenseCompatGraph extends DefaultDirectedGraph<LicenseVertex, Lice
 	}
 
 	/**
-	 * 
+	 * Traverses all outgoing vertices from a start vertex and collect the
+	 * licenses contained in these vertices. Edges between vertices may be
+	 * transitive or non transitive. The traversal for non transitive edges
+	 * stops at the target vertex of the specific edge. The returned licenses
+	 * are forward compatible with the licenses of the start vertex.
+	 *
 	 * @param startVertex
-	 * @return
+	 *            the vertex to start the traversal from
+	 * @return the list of licenses as visited by the traversal
 	 */
 	Set<AnyLicenseInfo> traverse(final LicenseVertex startVertex) {
 

@@ -21,19 +21,19 @@ import com.github.aschet.spdx.licensecompat.graph.LicenseCompatGraph;
 import com.github.aschet.spdx.licensecompat.utils.Utils;
 
 /**
- * 
+ *
  * @author Thomas Ascher
  *
  */
 public class LicenseCompatAnalysis {
 
 	/**
-	 * 
+	 *
 	 */
 	private LicenseCompatStrategy compatStrategy;
 
 	/**
-	 * 
+	 *
 	 * @throws ImportException
 	 */
 	public LicenseCompatAnalysis() throws ImportException {
@@ -41,7 +41,7 @@ public class LicenseCompatAnalysis {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param compatProvider
 	 */
 	public LicenseCompatAnalysis(final LicenseCompatStrategy compatProvider) {
@@ -49,7 +49,7 @@ public class LicenseCompatAnalysis {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param declaredOrConcludedLicense
 	 * @param licensesFromFiles
 	 * @return
@@ -72,7 +72,7 @@ public class LicenseCompatAnalysis {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param expressions
 	 * @return
 	 */
@@ -120,7 +120,7 @@ public class LicenseCompatAnalysis {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public LicenseCompatStrategy getCompatStrategy() {
@@ -128,7 +128,7 @@ public class LicenseCompatAnalysis {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param compatStrategy
 	 */
 	public void setCompatStrategy(final LicenseCompatStrategy compatStrategy) {

@@ -14,7 +14,8 @@ import com.github.aschet.spdx.licensecompat.graph.LicenseEdgeType;
 import com.github.aschet.spdx.licensecompat.graph.LicenseVertex;
 
 /**
- * 
+ * Part of {@link LicenseCompatGraphImporter} to create the correct edge types.
+ *
  * @author Thomas Ascher
  */
 final class LicenseEdgeProvider implements EdgeProvider<LicenseVertex, LicenseEdge> {
