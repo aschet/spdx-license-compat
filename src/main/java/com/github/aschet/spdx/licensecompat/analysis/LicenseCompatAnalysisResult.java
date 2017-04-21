@@ -40,7 +40,7 @@ public class LicenseCompatAnalysisResult {
 
 	/**
 	 * Get the conflicts between the tested licenses.
-	 * 
+	 *
 	 * @return conflicts as list of conjunctive SPDX expressions
 	 */
 	public List<AnyLicenseInfo> getConflicts() {
@@ -49,7 +49,7 @@ public class LicenseCompatAnalysisResult {
 
 	/**
 	 * Get the tested licenses.
-	 * 
+	 *
 	 * @return licenses as SPDX identifiers
 	 */
 	public Set<AnyLicenseInfo> getLicenses() {

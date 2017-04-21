@@ -21,44 +21,61 @@ import com.github.aschet.spdx.licensecompat.graph.LicenseCompatGraph;
 import com.github.aschet.spdx.licensecompat.utils.Utils;
 
 /**
+ * Performs a license compatibility analysis on a set of SPDX license
+ * expressions (with support for dual and multi licensing). This class can be
+ * used to implement license compliance systems which analyze the contents of
+ * SPDX documents. Basis for the analysis implementation is a implementor of
+ * {@link LicenseCompatStrategy}.
  *
  * @author Thomas Ascher
- *
  */
 public class LicenseCompatAnalysis {
 
 	/**
-	 *
+	 * A specific strategy for license compatibility tests.
 	 */
 	private LicenseCompatStrategy compatStrategy;
 
 	/**
+	 * Construct the analysis from the internal DOT file.
 	 *
 	 * @throws ImportException
+	 *             thrown when the loading of the internal DOT file failed
 	 */
 	public LicenseCompatAnalysis() throws ImportException {
 		setCompatStrategy(LicenseCompatGraph.createFromResources());
 	}
 
 	/**
+	 * Construct the analysis from a given compatibility strategy.
 	 *
-	 * @param compatProvider
+	 * @param compatStrategy
+	 *            a specific strategy for license compatibility tests
 	 */
-	public LicenseCompatAnalysis(final LicenseCompatStrategy compatProvider) {
-		setCompatStrategy(compatProvider);
+	public LicenseCompatAnalysis(final LicenseCompatStrategy compatStrategy) {
+		setCompatStrategy(compatStrategy);
 	}
 
 	/**
+	 * Elements in an SPDX document usually consists of a set of licenses, a
+	 * declared license (as expression) and a concluded license (as expression).
+	 * This method can be used to analyze such scenarios. The primary input
+	 * expression is split to conjunctive sets and for each set a result is
+	 * generated.
 	 *
 	 * @param declaredOrConcludedLicense
+	 *            the declared or concluded license expression of an SPDX
+	 *            element
 	 * @param licensesFromFiles
-	 * @return
+	 *            the contained licenses of an SPDX element
+	 * @return a list of results for each conjunctive input set mapped to a
+	 *         declaredOrConcludedLicense subexpression
 	 */
 	public Map<AnyLicenseInfo, List<LicenseCompatAnalysisResult>> analyse(
 			final AnyLicenseInfo declaredOrConcludedLicense, final AnyLicenseInfo[] licensesFromFiles) {
 
 		Utils.ensureNotNull(declaredOrConcludedLicense);
-		Utils.ensureNotNull((Object[]) licensesFromFiles);
+		Utils.ensureNotNull((Object[])licensesFromFiles);
 
 		final Map<AnyLicenseInfo, List<LicenseCompatAnalysisResult>> results = new LinkedHashMap<>();
 
@@ -72,9 +89,15 @@ public class LicenseCompatAnalysis {
 	}
 
 	/**
+	 * Tests the compatibility of the given SPDX license expressions. All given
+	 * expressions are connected with the AND operator and then split to
+	 * conjunctive license sets after simplification. For each of these sets a
+	 * result is generated. An example for an input expression is "(GPL-3.0+ AND
+	 * LGPL-3.0 AND MIT)".
 	 *
 	 * @param expressions
-	 * @return
+	 *            a set of expressions to test the compatibility for
+	 * @return a list of results for each conjunctive input set
 	 */
 	public List<LicenseCompatAnalysisResult> analyseExpressions(final AnyLicenseInfo... expressions) {
 
@@ -120,16 +143,19 @@ public class LicenseCompatAnalysis {
 	}
 
 	/**
-	 *
-	 * @return
+	 * Get the strategy used for license compatibility tests.
+	 * 
+	 * @return a specific strategy for license compatibility tests
 	 */
 	public LicenseCompatStrategy getCompatStrategy() {
 		return compatStrategy;
 	}
 
 	/**
+	 * Set the strategy for license compatibility tests.
 	 *
 	 * @param compatStrategy
+	 *            a specific strategy for license compatibility tests
 	 */
 	public void setCompatStrategy(final LicenseCompatStrategy compatStrategy) {
 		this.compatStrategy = compatStrategy;
