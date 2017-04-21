@@ -13,86 +13,101 @@ import java.util.Set;
 import org.spdx.rdfparser.license.AnyLicenseInfo;
 
 /**
+ * The result of the license compatibility evaluation performed by
+ * {@link LicenseCompatAnalysis}. A result contains the licenses which were part
+ * of the compatibility test, the conflicts which resulted from the
+ * compatibility test and the licenses which were not recognized by the
+ * {@link LicenseCompatStrategy}.
  *
  * @author Thomas Ascher
- *
  */
 public class LicenseCompatAnalysisResult {
 
 	/**
-	 *
+	 * List of conflicts between the tested licenses.
 	 */
 	private List<AnyLicenseInfo> conflicts = new ArrayList<>();
 
 	/**
-	 *
+	 * Set of the tested licenses.
 	 */
 	private Set<AnyLicenseInfo> licenses = new LinkedHashSet<>();
 
 	/**
-	 *
+	 * Set of the tested licenses which were not supported.
 	 */
 	private Set<AnyLicenseInfo> unsupportedLicenses = new LinkedHashSet<>();
 
 	/**
-	 *
-	 * @return
+	 * Get the conflicts between the tested licenses.
+	 * 
+	 * @return conflicts as list of conjunctive SPDX expressions
 	 */
 	public List<AnyLicenseInfo> getConflicts() {
 		return conflicts;
 	}
 
 	/**
-	 *
-	 * @return
+	 * Get the tested licenses.
+	 * 
+	 * @return licenses as SPDX identifiers
 	 */
 	public Set<AnyLicenseInfo> getLicenses() {
 		return licenses;
 	}
 
 	/**
+	 * Get the unrecognized licenses.
 	 *
-	 * @return
+	 * @return licenses as SPDX identifiers
 	 */
 	public Set<AnyLicenseInfo> getUnsupportedLicenses() {
 		return unsupportedLicenses;
 	}
 
 	/**
+	 * Determines if the result has conflicts.
 	 *
-	 * @return
+	 * @return true if the result has conflicts
 	 */
 	public boolean hasConflicts() {
 		return getConflicts().size() > 0;
 	}
 
 	/**
+	 * Determines if some of the tested licenses where not supported.
 	 *
-	 * @return
+	 * @return true when unsupported licenses are present
 	 */
 	public boolean hasUnsupportedLicenses() {
 		return getUnsupportedLicenses().size() > 0;
 	}
 
 	/**
+	 * Set the conflicts between the tested licenses.
 	 *
 	 * @param conflicts
+	 *            the conflicts between the licenses as conjunctive sets
 	 */
 	public void setConflicts(final List<AnyLicenseInfo> conflicts) {
 		this.conflicts = conflicts;
 	}
 
 	/**
+	 * Set the tested licenses.
 	 *
 	 * @param licenses
+	 *            licenses as SPDX identifiers
 	 */
 	public void setLicenses(final Set<AnyLicenseInfo> licenses) {
 		this.licenses = licenses;
 	}
 
 	/**
+	 * Set the unrecognized licenses.
 	 *
 	 * @param unsupportedLicenses
+	 *            licenses as SPDX identifiers
 	 */
 	public void setUnsupportedLicenses(final Set<AnyLicenseInfo> unsupportedLicenses) {
 		this.unsupportedLicenses = unsupportedLicenses;

@@ -20,13 +20,14 @@ import com.github.aschet.spdx.expression.TypeInfo;
 public final class Utils {
 
 	/**
-	 * Construction for licenses which have not SPDX license
-	 * identifier. They have to be present in a specific
-	 * format within the graph, otherwise the lookup will
-	 * fail.
-	 * 
-	 * @param licenseName name of the license
-	 * @return a {@link ExtractedLicenseInfo} instance for representation in the graph
+	 * Construction for licenses which have not SPDX license identifier. They
+	 * have to be present in a specific format within the graph, otherwise the
+	 * lookup will fail.
+	 *
+	 * @param licenseName
+	 *            name of the license
+	 * @return a {@link ExtractedLicenseInfo} instance for representation in the
+	 *         graph
 	 */
 	public static ExtractedLicenseInfo createExtractedLicenseInfo(final String licenseName) {
 		return new ExtractedLicenseInfo(licenseName, licenseName, licenseName, null, null);

@@ -25,7 +25,7 @@ public class UnsupportedLicenseException extends Exception {
 
 	/**
 	 * Construct with an unsupported license.
-	 * 
+	 *
 	 * @param license
 	 */
 	public UnsupportedLicenseException(final AnyLicenseInfo license) {
@@ -34,7 +34,7 @@ public class UnsupportedLicenseException extends Exception {
 
 	/**
 	 * Get the unsupported license.
-	 * 
+	 *
 	 * @return the unsupported license
 	 */
 	public AnyLicenseInfo getLicense() {
@@ -43,7 +43,7 @@ public class UnsupportedLicenseException extends Exception {
 
 	/**
 	 * Set the unsupported license.
-	 * 
+	 *
 	 * @param license
 	 *            the unsupported license
 	 */
