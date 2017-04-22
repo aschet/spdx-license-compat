@@ -1,8 +1,9 @@
 # spdx-license-compat
 
-Spdx-license-compat is a Java library which implements a graph based license compatibility analysis [1] and operates on [SPDX](https://spdx.org/spdx-specification-21-web-version) identifiers and expressions. 
-
-
+Spdx-license-compat is a Java library which implements a graph based license compatibility analysis [1] and operates on [SPDX](https://spdx.org/spdx-specification-21-web-version) identifiers and expressions. While some design decisions and the graph database were derived from the [SPDX License Compatibility RESTful Service](https://github.com/dpasch01/spdx-compat-tools), this the library itself is a clean-room implementation. Spdx-license-compat builds on top of the [SPDX tools](https://github.com/spdx/tools) and provides the following features:
+- Comatibility check between SPDX license identifiers (with `+` and `WITH` operator) and non SPDX listed licenses.
+- Compatibility analysis of SPDX license expressions.
+- Compatibility analysis for SPDX elements with dual or multi licensing.
 
 ## Operations
 
@@ -22,7 +23,7 @@ Compatibility analysis for SPDX license expressions:
 AnyLicenseInfo expression = LicenseInfoFactory.parseSPDXLicenseString("(((LGPL-3.0+ OR MIT) AND GPL-2.0) OR BSD-3-Clause)");
 
 LicenseCompatAnalysis analysis = new LicenseCompatAnalysis(LicenseCompatGraph.createFromResources());
-analysis.analyseExpressions(expression);
+analysis.analyseExpressions(expression); // conflict between LGPL-3.0+ and GPL-2.0
 ```
 
 Compatibility analysis for SPDX elements:
@@ -35,7 +36,7 @@ licensesFromFiles[1] = LicenseInfoFactory.parseSPDXLicenseString("LGPL-3.0+");
 licensesFromFiles[2] = LicenseInfoFactory.parseSPDXLicenseString("MIT");
 
 LicenseCompatAnalysis analysis = new LicenseCompatAnalysis(LicenseCompatGraph.createFromResources());
-analysis.analyse(declaredLicense, licensesFromFiles);
+analysis.analyse(declaredLicense, licensesFromFiles); // no conflicts
 ```
 
 ## Limitations
