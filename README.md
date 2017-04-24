@@ -1,6 +1,6 @@
 # spdx-license-compat
 
-Spdx-license-compat is a Java library which implements a graph based license compatibility analysis [1] and operates on [SPDX](https://spdx.org/spdx-specification-21-web-version) identifiers and expressions. While some design decisions and the graph database were derived from the [SPDX License Compatibility RESTful Service](https://github.com/dpasch01/spdx-compat-tools), this the library itself is a clean-room implementation. Spdx-license-compat builds on top of the [SPDX tools](https://github.com/spdx/tools) and provides the following features:
+Spdx-license-compat is a Java library which implements a graph based license compatibility analysis [1] and operates on [SPDX](https://spdx.org/spdx-specification-21-web-version) identifiers and expressions. While some design decisions and the graph database were derived from the [SPDX License Compatibility RESTful Service](https://github.com/dpasch01/spdx-compat-tools), this library itself is a clean-room implementation. Spdx-license-compat builds on top of the [SPDX tools](https://github.com/spdx/tools) and provides the following features:
 - Comatibility check between SPDX license identifiers (with `+` and `WITH` operator) and non SPDX listed licenses.
 - Compatibility analysis of SPDX license expressions.
 - Compatibility analysis for SPDX elements with dual or multi licensing.
@@ -44,7 +44,7 @@ analysis.analyse(declaredLicense, licensesFromFiles); // no conflicts
 - License exceptions are irgnore by the compatibility analysis.
 - Ordered forward compatibility checking is currently not implemented (e.g. `GPL-2.0+ -> GPL-3.0` vs `GPL-3.0 -> GPL-2.0+`).
 - No possible adjustments are suggested in case of license conflicts. This feature is present in the [SPDX License Compatibility RESTful Service](https://github.com/dpasch01/spdx-compat-tools).
-- Only a fraction of the existing SPDX license identifiers is supported: AFL-3.0, AGPL-1.0, AGPL-3.0, Apache-1.0, Apache-2.0, APSL-1.0, Artistic-2.0, BSD-2-Clause-FreeBSD, BSD-3-Clause, CDDL-1.0, CDDL-1.1, CECILL-2.0, EUPL-1.1, GPL-2.0, GPL-3.0, LGPL-2.1, LGPL-3.0, Libpng, MIT, MPL-1.1, MPL-2.0, OSL-3.0, OSL-3.0, X11, Zlib.
+- Only a fraction of the existing SPDX license identifiers is supported: AFL-3.0, AGPL-1.0, AGPL-3.0, Apache-1.0, Apache-2.0, APSL-1.0, Artistic-2.0, BSD-2-Clause-FreeBSD, BSD-3-Clause, CDDL-1.0, CDDL-1.1, CECILL-2.0, EUPL-1.1, GPL-2.0, GPL-3.0, LGPL-2.1, LGPL-3.0, Libpng, MIT, MPL-1.1, MPL-2.0, OSL-3.0, X11, Zlib.
 
 ## Compiling and Integration
 
