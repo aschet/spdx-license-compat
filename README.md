@@ -43,7 +43,7 @@ analysis.analyse(declaredLicense, licensesFromFiles); // no conflicts
 
 - License exceptions are irgnore by the compatibility analysis.
 - Ordered forward compatibility checking is currently not implemented (e.g. `GPL-2.0+ -> GPL-3.0` vs `GPL-3.0 -> GPL-2.0+`).
-- No possible adjustments are suggested in case of license conflicts. This feature is present in the [SPDX License Compatibility RESTful Service](https://github.com/dpasch01/spdx-compat-tools).
+- No possible adjustments are suggested in case of license conflicts.
 - Only a fraction of the existing SPDX license identifiers is supported: AFL-3.0, AGPL-1.0, AGPL-3.0, Apache-1.0, Apache-2.0, APSL-1.0, Artistic-2.0, BSD-2-Clause-FreeBSD, BSD-3-Clause, CDDL-1.0, CDDL-1.1, CECILL-2.0, EUPL-1.1, GPL-2.0, GPL-3.0, LGPL-2.1, LGPL-3.0, Libpng, MIT, MPL-1.1, MPL-2.0, OSL-3.0, X11, Zlib.
 
 ## Compiling and Integration
